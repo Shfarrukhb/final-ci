@@ -21,7 +21,7 @@ on:
 
 jobs:
   tf_code_check:
-    name: Terraform Validation and Build
+    name: Final task in actions
     runs-on: ubuntu-latest
 
     if:  ${{ inputs.tfpath }} 
@@ -39,6 +39,13 @@ jobs:
       uses: hashicorp/setup-terraform@v2.0.2
 
     - name: Checking exsistance of tf files
-      run: ls -la
-    
+      run: ls -la  
+
+    - name: S3 Creation
+      run: |
+          aws s3 mb s3://shfarrukhb-itech-final-task
+          env: 
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: 'eu-east-1'   
 
