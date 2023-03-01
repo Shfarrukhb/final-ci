@@ -49,6 +49,6 @@ jobs:
     - name: S3 Creation
       run: |
           aws s3api create-bucket \
-          --bucket my-bucket \
+          --bucket shfarrukhb-finaltask-state \
           --region us-east-1 \
 
