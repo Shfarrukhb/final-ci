@@ -20,7 +20,7 @@ on:
 env: 
   db_table_name: shfarrukhb-finaltask-dynamodb
   s3_name: shfarrukhb-finaltask-bucket
-
+ 
 jobs:
   Preparing_env:
     runs-on: ubuntu-latest
@@ -58,10 +58,11 @@ jobs:
     steps:
     - name: Check DB Existance
       run: |
-          aws dynamodb list-tables | grep ${{ env.db_table_name }} > $db \
-           if $db = ${{ env.db_table_name }} ; then 
-            echo "Dynamo DB exist or already created"
-           else 
-            echo "Please, create DB for tfstate file lock! "
-           fi \
+        db=$(aws dynamodb list-tables | grep ${{ env.db_table_name }}) 
+        if $db = ${{ env.db_table_name }} ; then
+          echo "Dynamo DB exist or already created"
+        else 
+          echo "Please, create DB for tfstate file lock! "
+        fi 
+      shell: /bin/bash
         
