@@ -56,7 +56,7 @@ jobs:
     steps:
     - name: Check DB Existance
       run: |
-        if [[ aws dynamodb describe-table --table-name ${{ env.db_table_name }} == ${{ env.db_table_name }} ]]; then 
+        if aws dynamodb describe-table --table-name ${{ env.db_table_name }} == ${{ env.db_table_name }} ; then 
           echo "Dynamo DB exist or already created"
         else 
           echo "Please, create DB for tfstate file lock! "
