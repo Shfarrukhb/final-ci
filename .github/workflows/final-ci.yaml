@@ -17,7 +17,9 @@ on:
         description: 'Input the number of instances you want to create'
         required: true
         default: '1'
-
+env: 
+  db_table_name: shfarrukhb-finaltask-dynamodb
+  s3_name: shfarrukhb-finaltask-bucket
 
 jobs:
   Preparing_env:
