@@ -6,9 +6,9 @@ on:
         required: true
         type: choice
         options:
-        - terraform plan --lock-state=false
-        - terraform apply --auto-approve --lock-state=false
-        - terraform destroy --lock-state=false
+        - Plan 
+        - Apply 
+        - Destroy
       tfpath:
         description: 'TF File Path'     
         required: false
@@ -16,26 +16,25 @@ on:
       instance_count: 
         description: 'Input the number of instances you want to create'
         required: true
-        default: '3'
-
+        default: '1'
 
 jobs:
-  tf_code_check:
-    name: Final task in actions
+  Preparing_env:
     runs-on: ubuntu-latest
-
-    if:  ${{ inputs.tfpath }} 
+    if: ${{ inputs.tfpath }}
     steps:
     - uses: actions/checkout@v2.5.0
-    
+   
     - name: Configure AWS Credentials Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
+    
     - name: Checking exsistance of tf files
       run: ls -la  
+    
     - name: aws-cli installation
       run: |
          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -44,11 +43,21 @@ jobs:
          aws --version
 
     - name: Setup Terraform CLI
-      uses: hashicorp/setup-terraform@v2.0.2
-
-    - name: S3 Creation
+      uses: hashicorp/setup-terraform@v2.0.2 
+  
+  
+  plan:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.action == 'Plan' }}
+    steps:
+    - name: Check DB Existance
       run: |
-          aws s3api create-bucket \
-          --bucket shfarrukhb-finaltask-state \
-          --region us-east-1 \
-
+        if [[ aws dynamodb describe-table --table-name ${{ var.db_table_name}} == ${{ var.db_table_name}} ]]; then 
+          echo "Dynamo DB exist or already created"
+        else 
+          echo "Please, create DB for tfstate file lock! "
+        aws dynamodb create-table \
+          --table-name ${{ var.db_table_name }} \
+          --attribute-definitions AttributeName=LockID,AttributeType=S \
+          --key-schema AttributeName=LockID,KeyType=HASH \
+    

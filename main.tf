@@ -2,7 +2,7 @@ terraform {
 
   backend "s3" {
     encrypt = true
-    bucket  = "tfstate-bucket-backend"
+    bucket  = "shfarrukhb-finaltask-state"
     dynamodb_table = "Dynamo-tfstate-lock"
     key    = "current-state.tfstate"
     region = "us-east-1"
@@ -70,7 +70,7 @@ module "ec2" {
 
 }
 
-module "dynamo" {
+/* module "dynamo" {
   source = "./modules/dynamo"
   
-}
+} */
