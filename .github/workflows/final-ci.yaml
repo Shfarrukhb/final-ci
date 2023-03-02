@@ -64,5 +64,5 @@ jobs:
         else 
           echo "Please, create DB for tfstate file lock! "
         fi 
-      shell: /bin/bash
+      shell: bash
         
