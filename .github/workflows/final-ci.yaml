@@ -38,13 +38,6 @@ jobs:
     - name: Checking exsistance of tf files
       run: ls -la  
     
-    - name: aws-cli installation
-      run: |
-         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-         unzip awscliv2.zip
-         sudo ./aws/install --update
-         aws --version
-    
     - name: Checking DB
       run: aws dynamodb list-tables | grep ${{ env.db_table_name }}
 
