@@ -57,10 +57,10 @@ jobs:
     if: ${{ github.event.inputs.action == 'Plan' }}
     steps:
     - name: Check DB Existance
-      run: |
-        if aws dynamodb list-tables | grep ${{ env.db_table_name }} ==  ${{ env.db_table_name }} ; then 
-          echo "Dynamo DB exist or already created"
-        else 
-          echo "Please, create DB for tfstate file lock! "
-        fi
+      run: aws dynamodb list-tables | grep ${{ env.db_table_name }} > $db \
+           if $db = ${{ env.db_table_name }} ; then 
+            echo "Dynamo DB exist or already created"
+           else 
+            echo "Please, create DB for tfstate file lock! "
+           fi
         
