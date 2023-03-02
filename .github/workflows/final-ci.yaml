@@ -57,4 +57,5 @@ jobs:
           echo "Dynamo DB exist or already created"
         else 
           echo "Please, create DB for tfstate file lock! "
+        fi
         
