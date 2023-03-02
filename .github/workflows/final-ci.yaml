@@ -45,7 +45,7 @@ jobs:
          sudo ./aws/install --update
          aws --version
     - name: Checking DB
-      run: aws dynamodb describe-table --table-name ${{ env.db_table_name }}
+      run: aws dynamodb list-tables | grep ${{ env.db_table_name }}
 
     - name: Setup Terraform CLI
       uses: hashicorp/setup-terraform@v2.0.2 
