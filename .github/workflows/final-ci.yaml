@@ -44,19 +44,19 @@ jobs:
 
     - name: Setup Terraform CLI
       uses: hashicorp/setup-terraform@v2.0.2 
-  
+
+    - name: Check DB Existance
+      run: |
+        fr=$(aws dynamodb list-tables | grep shfarrukhb-finaltask-dynamodb ) 
+        echo $fr
+      shell: bash
+      working-directory: ./
   
   plan:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.action == 'Plan' }}
     steps:
-    - name: Check DB Existance
-      run: |
-          fr=$(aws dynamodb list-tables | grep shfarrukhb-finaltask-dynamodb ) 
-          echo $fr
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./
+    
+      
       
         
