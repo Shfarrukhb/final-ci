@@ -50,6 +50,7 @@ jobs:
     if: ${{ github.event.inputs.action == 'Plan' }}
     steps:
     - name: Check DB Existance
-      run: db=$(aws dynamodb scan --table-name env.db_table_name )
+      run: |
+          db=$(aws dynamodb scan --table-name env.db_table_name ) 
           echo $db
         
