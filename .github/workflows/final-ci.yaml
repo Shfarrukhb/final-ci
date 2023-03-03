@@ -44,20 +44,13 @@ jobs:
     - name: Setup Terraform CLI
       uses: hashicorp/setup-terraform@v2.0.2 
 
-    - name: Checking DB
-      id: db_check
-      run: |
-          aws dynamodb list-tables | grep ${{ env.db_table_name }} | tr -d '"'
-           echo "::set-output name=db::H"
-    
     - name: Check DB Existance
       run: |
-        if [[ "${{ steps.db_check.outputs.stdout }}" == env.db_table_name ]] ; then
+        if aws dynamodb list-tables | grep ${{ env.db_table_name }} | tr -d '"' ; then
           echo "H"
         else
           echo "NH"
         fi;
-      shell: bash
       working-directory: ./
     
       
