@@ -45,8 +45,9 @@ jobs:
       uses: hashicorp/setup-terraform@v2.0.2 
 
     - name: Check DB Existance
-      run: |
-        if [[ "${{ aws dynamodb list-tables | grep ${{ env.db_table_name }} | tr -d '"' }}" == env.db_table_name ]] ; then
+      run: | 
+        aws dynamodb list-tables | grep ${{ env.db_table_name }} | tr -d '"' >> $db_chr
+        if [[ "${{ db_chr }}" == env.db_table_name ]] ; then
           echo "H"
         else
           echo "NH"
