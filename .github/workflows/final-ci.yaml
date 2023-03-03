@@ -51,11 +51,6 @@ jobs:
         echo $fr
       shell: bash
       working-directory: ./
-  
-  plan:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.action == 'Plan' }}
-    steps:
     
       
       
