@@ -49,6 +49,11 @@ jobs:
       run: |
         fr=$(aws dynamodb list-tables | grep shfarrukhb-finaltask-dynamodb ) 
         echo $fr
+        if {{ "$fr" == env.db_table_name }}; then
+          echo "Already Have"
+        else
+          echo "Do not have"
+        fi;
       shell: bash
       working-directory: ./
     
