@@ -51,6 +51,6 @@ jobs:
     steps:
     - name: Check DB Existance
       run: |
-          db=$(aws dynamodb scan --table-name env.db_table_name ) 
+          db=$(aws dynamodb scan --table-name shfarrukhb-finaltask-dynamodb ) 
           echo $db
         
