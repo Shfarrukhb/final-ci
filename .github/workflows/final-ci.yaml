@@ -53,4 +53,5 @@ jobs:
       run: |
           db=$(aws dynamodb scan --table-name | grep shfarrukhb-finaltask-dynamodb ) 
           echo $db
+      shell: bash
         
