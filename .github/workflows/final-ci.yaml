@@ -47,12 +47,12 @@ jobs:
 
     - name: Check DB Existance
       run: |
-        fr=$(aws dynamodb list-tables | grep shfarrukhb-finaltask-dynamodb ) 
+        fr=$(aws dynamodb list-tables | grep shfarrukhb* | tr -d '"') 
         echo $fr
         if {{ "$fr" == env.db_table_name }}; then
-          echo "Already Have"
+          echo "H"
         else
-          echo "Do not have"
+          echo "NH"
         fi;
       shell: bash
       working-directory: ./
