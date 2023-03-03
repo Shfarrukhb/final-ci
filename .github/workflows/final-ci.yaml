@@ -47,7 +47,7 @@ jobs:
     - name: Check DB Existance
       run: | 
         aws dynamodb list-tables | grep ${{ env.db_table_name }} | tr -d '"' >> $env:db_chr
-        if env.db_chr == env.db_table_name ; then
+        if $env:db_chr == env.db_table_name ; then
           echo "H"
         else
           echo "NH"
