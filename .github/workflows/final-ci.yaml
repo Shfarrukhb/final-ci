@@ -46,8 +46,7 @@ jobs:
 
     - name: Check DB Existance
       run: | 
-        echo $(aws s3 ls | grep shfarrukhb-finaltask-state) >> $GITHUB_OUTPUT
-        if  $GITHUB_OUTPUT == "" ; then
+        if echo $(aws s3 ls | grep shfarrukhb-finaltask-state) == "" ; then
           echo "No"
         else
           echo "Exist"
