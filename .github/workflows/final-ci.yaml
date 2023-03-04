@@ -46,7 +46,7 @@ jobs:
 
     - name: Check DB Existance
       run: | 
-        if echo $(aws s3 ls | grep shfarrukhb-finaltask-state) == "" ; then
+        if echo $echo $(aws s3 ls | awk '{print $3}' | grep shfar) == "" ; then
           echo "No"
         else
           echo "Exist"
