@@ -47,7 +47,7 @@ jobs:
     - name: Check DB Existance
       run: | 
         echo $(aws dynamodb list-tables | grep ${{ env.db_table_name }}) >> $GITHUB_OUTPUT
-        if  $GITHUB_OUTPUT == " " ; then
+        if  $GITHUB_OUTPUT == "" ; then
           echo "Yes"
         else
           echo "No"
