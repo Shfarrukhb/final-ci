@@ -46,7 +46,8 @@ jobs:
 
     - name: Check DB Existance
       run: | 
-        if  echo $(aws dynamodb list-tables | grep ${{ env.db_table_name }}) == ${{ env.db_table_name }}; then
+        echo $(aws dynamodb list-tables | grep ${{ env.db_table_name }})
+        if  echo $(aws dynamodb list-tables | grep ${{ env.db_table_name }}) ; then
           echo "H"
         else
           echo "NH"
