@@ -1,7 +1,7 @@
 import boto3 
 import os
  
-dynamodb = boto3.client('dynamodb', region_name="ap-us-east-2") 
+dynamodb = boto3.client('dynamodb', region_name="ap-us-east-1") 
 table_name = os.getenv('db_table_name')
 
 # Create the DynamoDB table. 
