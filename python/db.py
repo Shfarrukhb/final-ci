@@ -26,5 +26,5 @@ def create_db(table_name):
         BillingMode='PAY_PER_REQUEST' 
         ) 
         print(table_name + " table has been created") 
- 
+        
 create_db(table_name)
