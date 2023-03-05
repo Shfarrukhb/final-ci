@@ -54,7 +54,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install boto3
           python ./python/db.py
-          print(f'::set-output name=db_chk::{error}')
+    
 
     
     
