@@ -59,7 +59,7 @@ jobs:
     - name: DB create python script
       run: |
           python ./python/db_create.py
-      if: steps.check.outputs.db_chr == 'none'
+      if: steps.check.outputs.db_chr == 'None'
     
 
     

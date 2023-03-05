@@ -9,5 +9,5 @@ def create_db(table_name):
     if table_name in dynamodb.list_tables()["TableNames"]: 
         print(table_name + " already exists") 
     else:      
-        print(f'::set-output name=db_chr::{none}')
+        print(f'::set-output name=db_chr::{None}')
 create_db(table_name)
