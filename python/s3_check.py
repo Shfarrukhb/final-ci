@@ -20,3 +20,4 @@ def check_bucket(bucket_name, region):
     else: 
         print("Bucket " + bucket_name + " doesn't exist")
         print(f'::set-output name=s3_chr::{None}')
+check_bucket(bucket_name)
