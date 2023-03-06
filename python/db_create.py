@@ -2,13 +2,10 @@ import boto3
 import os
 
 dynamodb = boto3.client('dynamodb', region_name="us-east-1")
-table_name = os.getenv('db_table_name')
+db_table_name = os.getenv('db_table_name')
 
-def create_db(db_name):
-
-
-dynamodb.create_table(
-    TableName=db_name,
+table = dynamodb.create_table(
+    TableName=db_table_name,
     KeySchema=[
         {
             'AttributeName': 'LockID',
@@ -23,5 +20,5 @@ dynamodb.create_table(
     ],
     BillingMode='PAY_PER_REQUEST'
 )
-print(db_name + " table has been created")
-create_db(db_name)
+print(db_table_name + " table has been created")
+create_db(db_table_name)
