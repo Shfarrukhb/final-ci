@@ -31,6 +31,9 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2.5.0
+
+    - name: terrafrom install 
+      uses: hashicorp/setup-terraform@v2.0.2
    
     - name: Configure AWS Credentials Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v1
@@ -61,7 +64,6 @@ jobs:
           python ./python/s3_check.py
     
     - name: terrafrom init 
-      uses: hashicorp/setup-terraform@v2.0.2 
       run: |
         terraform init
         terraform plan
@@ -72,6 +74,9 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2.5.0
+
+    - name: terrafrom install 
+      uses: hashicorp/setup-terraform@v2.0.2
    
     - name: Configure AWS Credentials Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v1
@@ -113,7 +118,6 @@ jobs:
       if: steps.check-s3.outputs.s3_chr == 'None'
 
     - name: terraform applying
-      uses: hashicorp/setup-terraform@v2.0.2 
       run: terraform apply --auto-approve -lock=false
 
   Terraform_destroy:
@@ -122,6 +126,9 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2.5.0
+
+    - name: terrafrom install 
+      uses: hashicorp/setup-terraform@v2.0.2
    
     - name: Configure AWS Credentials Action For GitHub Actions
       uses: aws-actions/configure-aws-credentials@v1
@@ -131,7 +138,6 @@ jobs:
         aws-region: ${{ env.region }}
     
     - name: terraform destroy
-      uses: hashicorp/setup-terraform@v2.0.2 
       run: |
         terraform destroy --auto-approve -lock=false
     
