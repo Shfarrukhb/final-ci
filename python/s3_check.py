@@ -19,5 +19,5 @@ def create_bucket(bucket_name, region):
     if bucket_name in s3_list: 
         print(bucket_name + " already exists") 
     else: 
-        print(bucket_name + " doesn't exist")
+        print("Bucket " + bucket_name + " doesn't exist")
         print(f'::set-output name=s3_chr::{None}')
