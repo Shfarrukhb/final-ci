@@ -114,8 +114,7 @@ jobs:
 
     - name: terraform applying
       uses: hashicorp/setup-terraform@v2.0.2 
-      run: |
-        terraform apply --auto-approve -lock=false
+      run: terraform apply --auto-approve -lock=false
 
   Terraform_destroy:
     runs-on: ubuntu-latest
