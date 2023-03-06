@@ -3,7 +3,7 @@ terraform {
   backend "s3" {
     encrypt = true
     bucket  = "shfarrukhb-finaltask-state"
-    dynamodb_table = "Dynamo-tfstate-lock"
+    dynamodb_table = "shfarrukhb-finaltask-dynamodb"
     key    = "current-state.tfstate"
     region = "us-east-1"
   }

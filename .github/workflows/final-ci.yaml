@@ -20,7 +20,7 @@ on:
 
 env: 
   db_table_name: shfarrukhb-finaltask-dynamodb
-  s3_name: shfarrukhb-finaltask-bucket
+  s3_name: shfarrukhb-finaltask-state
   region: us-east-1
  
 jobs:
