@@ -173,6 +173,7 @@ jobs:
     - name:  Table delete
       run: |
         aws dynamodb delete-table --table-name ${{ env.db_table_name }}
+        echo "Dynamodb table ${{ env.db_table_name}} has been removed"
       if: steps.check-db.outputs.db_chr == 'Yes'
 
     
