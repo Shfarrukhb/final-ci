@@ -16,7 +16,8 @@ for bucket in s3_client.list_buckets()['Buckets']:
 #function to check bucket 
 def check_bucket(bucket_name, region): 
     if bucket_name in s3_list: 
-        print(bucket_name + " already exists") 
+        print(bucket_name + " already exists")
+        print(f'::set-output name=s3_chr::{"Yes"}')
     else: 
         print("Bucket " + bucket_name + " doesn't exist")
         print(f'::set-output name=s3_chr::{None}')
