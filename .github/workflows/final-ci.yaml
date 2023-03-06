@@ -68,7 +68,8 @@ jobs:
           python -m pip install --upgrade pip
           python ./python/s3_check.py
     
-    - name: S3 create /python script
+    - name: S3 create aws cli
       run: |
-          python ./python/s3_create.py
+        aws s3api create-bucket --bucket ${{ env.s3_name }} --region ${{ env.region }}
+        echo "Bucket ${{ env.s3_name}} has been created"
       if: steps.check-s3.outputs.s3_chr == 'None'
