@@ -26,18 +26,6 @@ variable "ec2_db" {
 
 }
 
-# variable "public_subnet_id" {
-
-# }
-
-# variable "private_subnet_id" {
-
-# }
-
-# variable "db_subnet_id" {
-
-# }
-
 variable "sg-bastion" {
 
 }
@@ -53,22 +41,6 @@ variable "sg-private" {
 variable "sg-database" {
 
 }
-
-# variable "sg-bastion-id" {
-
-# }
-
-# variable "sg-public-id" {
-
-# }
-
-# variable "sg-private-id" {
-
-# }
-
-# variable "sg-database-id" {
-
-# }
 
 variable "vpc_name" {
 
@@ -125,26 +97,3 @@ variable "nat_gw" {
 variable "nat_rt" {
 
 }
-
-
-
-# variable "sg-bastion" {
-
-# }
-
-# variable "sg-public" {
-
-# }
-
-# variable "sg-private" {
-
-# }
-
-# variable "sg-database" {
-
-# }
-
-# variable "vpc" {
-
-# }
-

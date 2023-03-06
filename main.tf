@@ -69,8 +69,3 @@ module "ec2" {
   sg-database-id    = module.sg.database_sg_id
 
 }
-
-/* module "dynamo" {
-  source = "./modules/dynamo"
-  
-} */
