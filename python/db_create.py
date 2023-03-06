@@ -21,4 +21,3 @@ table = dynamodb.create_table(
     BillingMode='PAY_PER_REQUEST'
 )
 print(db_table_name + " table has been created")
-create_db(db_table_name)

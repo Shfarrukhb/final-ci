@@ -14,11 +14,10 @@ s3_resource = boto3.resource('s3', region_name=os.getenv('region') )
 for bucket in s3_client.list_buckets()['Buckets']: 
        s3_list.append(bucket["Name"]) 
  
-#function to create bucket 
+#function to check bucket 
 def create_bucket(bucket_name, region): 
     if bucket_name in s3_list: 
         print(bucket_name + " already exists") 
     else: 
         print(bucket_name + " doesn't exist")
         print(f'::set-output name=s3_chr::{None}')
-    create_bucket(bucket_name, region)
