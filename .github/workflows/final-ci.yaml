@@ -141,6 +141,7 @@ jobs:
     
     - name: terraform destroy
       run: |
+        terraform init
         terraform destroy --auto-approve -lock=false
     
     - name: setup python
