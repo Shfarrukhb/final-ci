@@ -9,6 +9,6 @@ def check_db(table_name):
     if table_name in dynamodb.list_tables()["TableNames"]: 
         print(table_name + " already exists") 
     else:  
-        print(table_name + "doesn't exist")    
+        print(table_name + " doesn't exist")    
         print(f'::set-output name=db_chr::{None}')
 check_db(table_name)

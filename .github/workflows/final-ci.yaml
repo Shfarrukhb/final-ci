@@ -57,5 +57,8 @@ jobs:
           pip install boto3
           python ./python/db_check.py
 
-    
+    - name: DB create  /python script
+      run: |
+          python ./python/db_create.py
+      if: steps.check-db.outputs.db_chr == 'None'
         
