@@ -5,7 +5,7 @@ import time
 region = os.getenv('region')
 bucket_name = os.getenv('s3_name')
 
-s3_client = boto3.client('s3', region_name=os.getenv('region')
+s3_client = boto3.client('s3', region_name=os.getenv('region'))
 
 s3_resource=boto3.resource( 's3', region_name=os.getenv('region'))
 
